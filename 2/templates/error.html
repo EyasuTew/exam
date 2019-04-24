@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+            <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+            <script src="{{ url_for('static', filename='js/validator.js') }}" ></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}" ></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.js') }}" ></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}" ></script>
+            <script src="{{ url_for('static', filename='js/request.js') }}" ></script>
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}" ></script>
+            
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    </head>
+   <body>
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#"><strong>MY</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+      aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+      <ul class="navbar-nav mr-auto">
+        
+       
+        <li class="nav-item active">
+          <a class="nav-link" href={{ url_for('exchangePage') }} style="color:white">Exchange</a></a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href={{ url_for('tradePage') }} style="color:white">Trade</a></a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href={{ url_for('symbolPage') }} style="color:white">Symbol</a></a>
+        </li>
+
+        
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
+    <br>
+    {% if error %}
+    <div class="container" style="width:50%">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error!!</h4>
+            <p>{{error}}</p>
+            <hr>
+            <p class="mb-0">Please check your data and try again</p>
+        </div>
+    </div>
+    {% endif %}
+   </body>
+</html>

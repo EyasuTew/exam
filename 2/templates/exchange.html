@@ -1,0 +1,247 @@
+<html>
+<head>
+
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/validator.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/request.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}" ></script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body onload="myValColor()">
+
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#"><strong>MY</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+      aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+      <ul class="navbar-nav mr-auto">
+        
+       
+        <li class="nav-item active">
+          <a class="nav-link" href={{ url_for('exchangePage') }} style="color:white">Exchange</a></a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href={{ url_for('tradePage') }} style="color:white">Trade</a></a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href={{ url_for('symbolPage') }} style="color:white">Symbol</a></a>
+        </li>
+
+        
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container" style="width:70%">
+
+  <form class="well form-horizontal" action="http://localhost:5007/currencyConvertorAmount" 
+  onsubmit="return validateForm()" method="post"  id="dataEntry" name="dataEntry">
+    <fieldset>
+    <!-- Form Name -->
+    
+        <legend><center><h2><b><br/>
+          Currency Convertor </b><hr/>
+        </h2></center></legend><br>
+    {% if message %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+      </div>
+    {% endif %}
+    {% if error %}
+    <div class="alert alert-danger"style="width:50%"  role="alert">
+        {{error}} , with Customer Id: {{customerId}}
+      </div>
+    {% endif %}
+    
+
+    <!-- Text input-->
+    <div class="row">
+
+
+        <div class="col">
+            <div class="form-group"> 
+                  <label class="col-md-12 control-label">From</label>
+                    <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="from" id="from" class="form-control selectpicker form-control-sm" required>
+                      <option value="BTC">BTC</option>
+                      <option value="ETH">ETH</option>
+                      <option value="USD">USD</option>
+                      <option value="JPY">JPY</option>
+                      <option value="EUR">EUR</option>
+                    </select>
+                  </div>
+                </div>
+                </div>
+            </div>
+           
+           <div class="col">
+            <div class="form-group"> 
+                  <label class="col-md-12 control-label">To</label>
+                    <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="to" id="to" class="form-control selectpicker form-control-sm" required>
+                      <option value="BTC">BTC</option>
+                      <option value="ETH">ETH</option>
+                      <option value="USD">USD</option>
+                      <option value="JPY">JPY</option>
+                      <option value="EUR">EUR</option>
+                    </select>
+                  </div>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+            <div class="form-group">
+                <label class="col-md-12 control-label">Amount</label>  
+                <div class="col-md-12 inputGroupContainer">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input  name="amount" id="amount" placeholder="Amount" 
+                class="form-control form-control-sm"  type="text" required>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+
+
+        </div>
+        <div class="row">
+          <div class="col">
+          
+              <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4"><br>
+          <input type="submit" value="Submit" class="btn btn-success btn-sm btn-block"/>
+      </div>
+    </div>
+
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+
+    <!-- Button -->
+
+    </fieldset>
+    </form>
+    <hr/>
+  </div>
+
+
+<div class="container" style="width:70%">
+
+  <form class="well form-horizontal" action="http://localhost:5007/currencyConvertorRate" 
+  onsubmit="return validateForm()" method="post"  id="dataEntry" name="dataEntry">
+    <fieldset>
+    <!-- Form Name -->
+    
+        <legend><center><h2><b><br/>
+          Currency Rate </b><hr/>
+        </h2></center></legend><br>
+    {% if message %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+      </div>
+    {% endif %}
+    {% if error %}
+    <div class="alert alert-danger"style="width:50%"  role="alert">
+        {{error}} , with Customer Id: {{customerId}}
+      </div>
+    {% endif %}
+    
+
+    <!-- Text input-->
+    <div class="row">
+
+
+        <div class="col">
+            <div class="form-group"> 
+                  <label class="col-md-12 control-label">From</label>
+                    <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="from" id="from" class="form-control selectpicker form-control-sm" required>
+                      <option value="BTC">BTC</option>
+                      <option value="ETH">ETH</option>
+                      <option value="USD">USD</option>
+                      <option value="USD">JPY</option>
+                      <option value="USD">EUR</option>
+                    </select>
+                  </div>
+                </div>
+                </div>
+            </div>
+           
+           <div class="col">
+            <div class="form-group"> 
+                  <label class="col-md-12 control-label">To</label>
+                    <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="to" id="to" class="form-control selectpicker form-control-sm" required>
+                      <option value="BTC">BTC</option>
+                      <option value="ETH">ETH</option>
+                      <option value="USD">USD</option>
+                      <option value="USD">JPY</option>
+                      <option value="USD">EUR</option>
+                    </select>
+                  </div>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+
+        </div>
+
+
+
+        </div>
+
+        <div class="row">
+          <div class="col">
+          
+              <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4"><br>
+          <input type="submit" value="Submit" class="btn btn-success btn-sm btn-block"/>
+      </div>
+    </div>
+
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+
+    <!-- Button -->
+
+    </fieldset>
+    </form>
+    <hr/>
+  </div>
+
+
+
+</body>
+</html>
