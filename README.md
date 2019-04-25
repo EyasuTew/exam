@@ -1,5 +1,5 @@
 # exam
-Directory '1', is answer for Question one .
+Directory 'Question 1', is answer for Question one .
 
 Directory '2', Answer for Question two:
 In '2' =>static  holde css, and js file..
